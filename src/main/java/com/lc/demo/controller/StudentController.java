@@ -69,7 +69,7 @@ public class StudentController {
     public String toUpdateMsgPage(HttpSession httpSession, Model model)
     {
 
-        Student stu= studentService.selectById((String) httpSession.getAttribute("loginUser"));
+        Student stu= studentService.selectByName((String) httpSession.getAttribute("loginUser"));
         List<Classes> classes=classService.getAllClass();
         model.addAttribute("stu",stu);
         model.addAttribute("classes",classes);
@@ -85,7 +85,7 @@ public class StudentController {
         List<Classes> classes = classService.getAllClass();
         if(allErrors.size()==0)
         {
-            Student studentInit=studentService.selectById((String) httpSession.getAttribute("loginUser"));
+            Student studentInit=studentService.selectByName((String) httpSession.getAttribute("loginUser"));
             student.setStuId(studentInit.getStuId());
             student.setStuName(studentInit.getStuName());
             student.setStuClass(studentInit.getStuClass());
@@ -113,7 +113,9 @@ public class StudentController {
     public String toresdmin(@PathVariable("pn") Integer pn,Model model,HttpSession httpSession)
     {
         PageHelper.startPage(pn, 9);
-        List<Resultss> resultsses = resultssService.selectByStuId((String) httpSession.getAttribute("loginUser"));
+        String login=(String) httpSession.getAttribute("loginUser");
+        String loginId=studentService.selectIdByName(login);
+        List<Resultss> resultsses = resultssService.selectByStuId(loginId);
         PageInfo<Resultss> page = new PageInfo<Resultss>(resultsses, 5);
         model.addAttribute("pageInfo",page);
         return "stu/resultlist";
@@ -124,7 +126,9 @@ public class StudentController {
     public String selectResByTerm(@PathVariable("pn") Integer pn,@Param("resTerm") String resTerm, Model model,HttpSession httpSession)
     {
         PageHelper.startPage(pn, 9);
-        List<Resultss> resultsses=resultssService.selectByStuIdAndResTerm((String) httpSession.getAttribute("loginUser"),resTerm);
+        String login=(String) httpSession.getAttribute("loginUser");
+        String loginId=studentService.selectIdByName(login);
+        List<Resultss> resultsses=resultssService.selectByStuIdAndResTerm(loginId,resTerm);
         PageInfo<Resultss> page = new PageInfo<Resultss>(resultsses, 5);
         model.addAttribute("pageInfo",page);
         model.addAttribute("resTerm",resTerm);

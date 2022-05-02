@@ -72,8 +72,9 @@ public class TeacherController {
     @GetMapping(value = "/tea/toUpdateMsgPage")
     public String teaToUpdateMsgPage(HttpSession httpSession, Model model)
     {
-
-        Teacher tea= teacherService.selectById((String) httpSession.getAttribute("loginUser"));
+        String login=(String) httpSession.getAttribute("loginUser");
+        String loginId=teacherService.selectIdByName(login);
+        Teacher tea= teacherService.selectById(loginId);
         model.addAttribute("tea",tea);
         return "tea/updatetea";
     }
@@ -86,7 +87,9 @@ public class TeacherController {
         List<MyError> errmsg = new ArrayList<>();
         if(allErrors.size()==0)
         {
-            Teacher teacherInit=teacherService.selectById((String) httpSession.getAttribute("loginUser"));
+            String login=(String) httpSession.getAttribute("loginUser");
+            String loginId=teacherService.selectIdByName(login);
+            Teacher teacherInit=teacherService.selectById(loginId);
             teacher.setTeaId(teacherInit.getTeaId());
             teacher.setTeaName(teacherInit.getTeaName());
             teacher.setTeaSex(teacherInit.getTeaSex());

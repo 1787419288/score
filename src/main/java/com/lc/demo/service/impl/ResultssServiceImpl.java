@@ -37,7 +37,6 @@ public class ResultssServiceImpl  implements ResultssService {
     public List<Resultss> selectByStuId(String stuId) {
         return resultMapper.selectResultByStuId(stuId);
     }
-
     @Override
     public List<Resultss> selectByStuIdAndResTerm(String stuId, String resTerm) {
         return resultMapper.selectResultByStuIdAndTerm(stuId,resTerm);

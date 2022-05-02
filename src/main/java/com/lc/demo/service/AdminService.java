@@ -11,5 +11,5 @@ import com.lc.demo.bean.Admin;
  **/
 public interface AdminService  {
 
-    Admin adminLogin(String AdminId,String AdminPass);
+    Admin adminLogin(String AdminName,String AdminPass);
 }

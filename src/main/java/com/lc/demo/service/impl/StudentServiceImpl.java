@@ -21,9 +21,9 @@ public class StudentServiceImpl implements StudentService {
     @Autowired
     private StudentMapper studentMapper;
     @Override
-    public Student login(String stuId, String stuPass)
+    public Student login(String stuName, String stuPass)
     {
-        return studentMapper.selectStudentByIdAndPass(stuId,stuPass);
+        return studentMapper.selectStudentByNameAndPass(stuName,stuPass);
     }
 
     @Override
@@ -40,6 +40,17 @@ public class StudentServiceImpl implements StudentService {
     public Student selectById(String stuId) {
         return studentMapper.selectStudentByStuId(stuId);
     }
+
+    @Override
+    public String selectIdByName(String stuName) {
+        return studentMapper.selectIdByName(stuName);
+    }
+
+    @Override
+    public Student selectByName(String stuName) {
+        return studentMapper.selectStudentByStuName(stuName);
+    }
+
 
     @Override
     public int deleStu(String stuId) {

@@ -20,8 +20,8 @@ public class AdminServiceImpl implements AdminService {
     private AdminMapper adminMapper;
 
     @Override
-    public Admin adminLogin(String AdminId, String AdminPass)
+    public Admin adminLogin(String AdminName, String AdminPass)
     {
-        return adminMapper.selectAdminByIdAndPass(AdminId,AdminPass);
+        return adminMapper.selectAdminByNameAndPass(AdminName,AdminPass);
     }
 }

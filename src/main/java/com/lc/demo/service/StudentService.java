@@ -12,7 +12,7 @@ import java.util.List;
  * @Version 1.0
  **/
 public interface StudentService {
-     Student login(String stuId,String stuPass);
+     Student login(String stuName,String stuPass);
 
      List<Student> getAllStudent();
 
@@ -21,8 +21,11 @@ public interface StudentService {
      int addStudentHavePass(Student student);
 
      Student selectById(String stuId);
+     String selectIdByName(String stuName);
+     Student selectByName(String stuId);
 
      int deleStu(String stuId);
+
 
      List<Student> seleStuByClassName(String stuClass);
 }

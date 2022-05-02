@@ -23,8 +23,8 @@ public class TeacherServiceImpl  implements TeacherService {
     private TeacherMapper teacherMapper;
 
     @Override
-    public Teacher login(String teaId, String teaPass) {
-        return teacherMapper.selectTeacherByIdAndPass(teaId,teaPass);
+    public Teacher login(String teaName, String teaPass) {
+        return teacherMapper.selectTeacherByNameAndPass(teaName,teaPass);
     }
 
     @Override
@@ -40,6 +40,11 @@ public class TeacherServiceImpl  implements TeacherService {
     @Override
     public int addTeacherHavePass(Teacher teacher) {
         return teacherMapper.insertTeacherHavaPass(teacher);
+    }
+
+    @Override
+    public String selectIdByName(String teaName) {
+        return teacherMapper.selectIdByName(teaName);
     }
 
     @Override
