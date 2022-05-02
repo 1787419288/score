@@ -16,8 +16,8 @@ import java.util.List;
 @Mapper
 public interface StudentMapper {
 
-    @Select("select * from student where  stu_id=#{stuId} and stu_pass=#{stuPass}")
-     Student selectStudentByIdAndPass(@Param("stuId") String stuId, @Param("stuPass") String stuPass);
+    @Select("select * from student where  stu_name=#{stuName} and stu_pass=#{stuPass}")
+     Student selectStudentByNameAndPass(@Param("stuName") String stuName, @Param("stuPass") String stuPass);
 
     @Select("select * from student")
     List<Student> selectAllStudent();
@@ -32,6 +32,9 @@ public interface StudentMapper {
     @Select("select * from student where  stu_id=#{stuId} ")
     Student selectStudentByStuId(String stuId);
 
+    @Select("select * from student where  stu_name=#{stuName} ")
+    Student selectStudentByStuName(String stuName);
+
     @Delete("DELETE from student where stu_id=#{stuId}")
     int deleteStuById(String StuId);
 
@@ -40,6 +43,9 @@ public interface StudentMapper {
 
     @Select("select stu_name from student where stu_id=#{stuId} ")
     String selectNameById(String stuId);
+
+    @Select("select stu_id from student where stu_name=#{stuName} ")
+    String selectIdByName(String stuName);
 
     @Select("select stu_id from student where stu_class=#{stuClass}")
     List<String> selectIdByClass(String stuClass);

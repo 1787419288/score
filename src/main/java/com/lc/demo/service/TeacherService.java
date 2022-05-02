@@ -14,13 +14,15 @@ import java.util.List;
  **/
 public interface TeacherService {
 
-    Teacher login(String teaId, String teaPass);
+    Teacher login(String teaName, String teaPass);
 
     List<Teacher> getAllTeacher();
 
     int addTeacher(Teacher teacher);
 
     int addTeacherHavePass(Teacher teacher);
+
+    String selectIdByName(String teaName);
 
     Teacher selectById(String teaId);
 

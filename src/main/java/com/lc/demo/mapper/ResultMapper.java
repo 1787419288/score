@@ -20,11 +20,15 @@ public interface ResultMapper {
     @Select("select * from result where  stu_id=#{stuId}")
     List<Resultss> selectResultByStuId(String stuId);
 
+
     @Select("select * from result")
     List<Resultss> selectAllResult();
 
     @Select("select * from result where stu_id=#{stuId} And res_term=#{resTerm}")
     List<Resultss> selectResultByStuIdAndTerm(@Param("stuId") String stuId, @Param("resTerm") String resTerm);
+
+    @Select("select * from result where res_term=#{resTerm}")
+    List<Resultss> selectResultByTerm(@Param("resTerm") String resTerm);
 
     @Insert("insert into result (stu_id,sub_name,res_num,res_term)values(#{stuId},#{subName},#{resNum},#{resTerm})")
     int insertResult(Resultss resultss);

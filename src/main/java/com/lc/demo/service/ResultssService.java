@@ -20,6 +20,7 @@ public interface ResultssService {
 
     List<Resultss> selectByStuIdAndResTerm(String stuId,String resTerm);
 
+
     int addResult(Resultss resultss);
 
     int deleteResultById(int resId);

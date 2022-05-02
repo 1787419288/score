@@ -16,7 +16,7 @@ import org.apache.ibatis.annotations.Select;
 @Mapper
 public interface AdminMapper {
 
-    @Select("select * from admin where  admin_id=#{adminId} and admin_pass=#{adminPass}")
-    Admin selectAdminByIdAndPass(@Param("adminId") String adminId, @Param("adminPass") String adminPass);
+    @Select("select * from admin where  admin_name=#{adminName} and admin_pass=#{adminPass}")
+    Admin selectAdminByNameAndPass(@Param("adminName") String adminName, @Param("adminPass") String adminPass);
 
 }
